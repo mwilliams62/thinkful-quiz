@@ -32,11 +32,11 @@ const STORE = [
 ] 
 
 const QUOTES = [
-    'I would give all my fame for a pot of ale and safety.<br> —William Shakespeare (King Henry V)',
-    'I am a firm believer in the people. If given the truth, they can be depended upon to meet any national crisis. The great point is to bring them the real facts, and beer.<br> —Abraham Lincoln',
-    'I feel sorry for people who don\'t drink. When they wake up in the morning, that\'s as good as they\'re going to feel all day.<br> - Frank Sinatra',
-    'Ah, beer. The cause of and the solution to all of life\’s problems.<br> - Homer Simpson',
-    'An intelligent man is sometimes forced to be drunk to spend time with his fools.<br> - Earnest Hemingway, For Whom the Bell Tolls' 
+    'I would give all my fame for a pot of ale and safety.\"<br> —William Shakespeare (King Henry V)',
+    'I am a firm believer in the people. If given the truth, they can be depended upon to meet any national crisis. The great point is to bring them the real facts, and beer.\"<br> —Abraham Lincoln',
+    'I feel sorry for people who don\'t drink. When they wake up in the morning, that\'s as good as they\'re going to feel all day.\"<br> - Frank Sinatra',
+    'Ah, beer. The cause of and the solution to all of life\’s problems.\"<br> - Homer Simpson',
+    '"An intelligent man is sometimes forced to be drunk to spend time with his fools.\"<br> - Earnest Hemingway, For Whom the Bell Tolls' 
 ]
 /********************************************************************************************************************* */
 let questionNum = 0;
@@ -73,7 +73,7 @@ function generateQuestion() {
         </div>
         <div class="stats">
             <span class="quiz-progress">Question: ${questionNum+1} of 5</span>
-            <span class="current-score">Score: ${userScore}/${questionNum+1}</span>
+            <span class="current-score">Score: ${userScore}/${questionNum}</span>
         </div>`
 }
 
@@ -134,7 +134,7 @@ function userCorrectFeedback() {
     if (questionNum+1 < STORE.length) {
         $('.user-feedback').html(`
             <h4>Correct! <br> Enjoy a beer.... quote:</h4>
-            <p class="quote">${QUOTES[questionNum]}</p>
+            <p class="quote">"${QUOTES[questionNum]}</p>
             <button class="js-next-button">Let's have another!</button>`
         );
         $('.stats').html(`
@@ -148,7 +148,6 @@ function userCorrectFeedback() {
         showResults();
     }
     else {
-        userScore++; 
         $('.user-feedback').html(`
         <h4>Correct! <br> Enjoy a beer.... quote:</h4>
         <p class="quote">${QUOTES[questionNum]}</p>

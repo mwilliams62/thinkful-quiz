@@ -43,7 +43,7 @@ h3 {
     text-align: center;
     color: rgb(103, 186, 238);
     font-weight: bold;
-    margin-top: 20px;
+    margin: 20px;
     background: black;
     padding: 25px;
 }
@@ -63,9 +63,19 @@ button {
     background-color: black;
     color: rgb(103, 186, 238);
     padding: 15px;
-    /* width: 40%; */
     margin: 0 auto 10px auto;
 }
+
+button:focus {
+    background-color: rgb(102, 96, 96);
+    color: rgb(247, 225, 34);
+}
+
+button:hover {
+    background-color: rgb(102, 96, 96);
+    color: rgb(247, 225, 34);
+}
+
 
 form {
     position: relative;
@@ -95,21 +105,18 @@ input {
     border-radius: 50%;
     width: 16px;
     height: 16px;
-    border: 2px solid #ffffff;
-    transition: 0.2s all linear;
-    outline: none;
     margin-right: 5px;
     position: relative;
     top: 2px;
 }
 
-input[type=radio] {
+input[type=radio] + label{
     flex: 0 0 auto; 
     margin-right: 10px;
     vertical-align: middle;
 }
 
-form input[type=radio]:checked +label{
+input[type=radio]:checked + label .choices span{
     background-color: rgb(122, 79, 15);
 }
 
@@ -133,14 +140,14 @@ div {
     background-color:rgb(122, 79, 15);
 }
 
-.choices:checked{
-    background-color:rgb(122, 79, 15);
-}
-
 .quiz-start {
     display: block;
     text-align: center;
     margin: auto;
+}
+
+.quiz-start h4 {
+    font-size: 20px;
 }
 
 .quiz {
@@ -207,9 +214,8 @@ div {
 }
 
 p.quote {
-    font-family: 'Shadow Into Light';
     font-weight: bold;
-    font-size: 22px;
+    font-size: 18px;
     /* background-color:  rgb(209, 128, 6);
     opacity: .65; */
     padding: 5px 0;
