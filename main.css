@@ -110,14 +110,18 @@ input {
     top: 2px;
 }
 
-input[type=radio] + label{
+input[type=radio]:focus{
     flex: 0 0 auto; 
     margin-right: 10px;
     vertical-align: middle;
+    outline: 2px solid whitesmoke;
 }
 
-input[type=radio]:checked + label .choices span{
-    background-color: rgb(122, 79, 15);
+input[type=radio]:focus + span{
+    flex: 0 0 auto; 
+    margin-right: 10px;
+    vertical-align: middle;
+    outline: 2px solid whitesmoke;
 }
 
 div {

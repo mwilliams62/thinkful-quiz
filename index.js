@@ -1,3 +1,5 @@
+
+//all of the questions for the quiz
 const STORE = [
     {
         questionID: 1,
@@ -30,7 +32,7 @@ const STORE = [
         correctAnswer: 'IPA'
     }
 ] 
-
+//The quotes provided by correct answer feedback
 const QUOTES = [
     'I would give all my fame for a pot of ale and safety.\"<br> —William Shakespeare (King Henry V)',
     'I am a firm believer in the people. If given the truth, they can be depended upon to meet any national crisis. The great point is to bring them the real facts, and beer.\"<br> —Abraham Lincoln',
@@ -43,7 +45,7 @@ let questionNum = 0;
 let userScore = 0;
 
 
-//generate question html
+//generate question html -- this function generates the question for the user and the submission form 
 function generateQuestion() {
    //if (questionNum+1 < STORE.length) {
         return  `
@@ -77,46 +79,30 @@ function generateQuestion() {
         </div>`
 }
 
-//handleStartButton
-// function handleStartButton() {
-//     console.log('handleStartButton ran');
-//     console.log('In handleStart the value of questionNum is '+questionNum)
-//     $('#js-start-button').click(function(event) {
-//     // $('.quiz-start').remove();
-//     // $('.quiz').css('display', 'block');
-//     nextQuestion();
-//     });
-// }
-
+// this function will take the user from the main screen to the first question
 function handleStartButton() {
     $('.js-start-button').click(event => {
-        console.log('The start button was clicked');
         $('.quiz-start').addClass('hidden');
         $('.quiz').removeClass('hidden');
         $('.quiz').html(generateQuestion);
-        console.log('handleStartButton ran, questionNum is now'+questionNum);
-
     });
 }
 
-//questionNumber
+// this function increments the questionNum variable and generates another question
 function nextQuestion() {
     questionNum++;
     $('.quiz').html(generateQuestion);
-    console.log('nextQuestion ran and questionNum is now '+questionNum);
 }
 
 
-//handleSubmitButton
+//handleSubmitButton -- this function takes the user input as userAnswerVal, compares it to the correctAnswer,
+// and calls the appropriate feedback function
 function handleSubmitButton() {
      $('.quiz').on('click', '.js-submit-button', function(event) { 
      event.preventDefault();
-     console.log('handleSubmitButton ran');
      const userAnswer = $('input:checked');
      const userAnswerVal = userAnswer.val();
      const correctAnswer = `${STORE[questionNum].correctAnswer}`;
-     console.log(`UserAnswer is ${userAnswerVal}`);
-     console.log(`Correct answer ${correctAnswer}`);
      $('.quiz').addClass('hidden');
      $('.user-feedback').removeClass('hidden');
     if (userAnswerVal === correctAnswer) {
@@ -128,7 +114,11 @@ function handleSubmitButton() {
     });
     }
 
-//correctFeedback
+//correctFeedback -- this function conditionally run when the userAnswerVal === correctAnwer.  It provides the user affirmation they
+//answered the question correctly and generates a quote associated with the questionNum position in the QUOTES array.  It also generates
+//the html for the stats div
+//The else section runs when the last question is asked so that the js-results-button is returned, rather than the js-next-button when
+//there are more questions to be asked.  
 function userCorrectFeedback() {
     userScore++; 
     if (questionNum+1 < STORE.length) {
@@ -143,8 +133,6 @@ function userCorrectFeedback() {
                     <span class="current-score">Score: ${userScore}/${questionNum+1}</span>
                 </div>`
         );
-        console.log('Correct feedback ran');
-        console.log(userScore);
         showResults();
     }
     else {
@@ -159,17 +147,19 @@ function userCorrectFeedback() {
                 <span class="current-score">Score: ${userScore}/${questionNum+1}</span>
             </div>`
     );
-        console.log('Correct feedback ran');
-        console.log(userScore);
         showResults();
     }
 }
 
-//incorrectFeeback
+//incorrectFeeback -- this function conditionally run when  userAnswerVal === correctAnwer is false.  It provides the user feedback that they
+//answered the question incorrectly and provides them the correct answer. It also generates
+//the html for the stats div
+//The else section runs when the last question is asked so that the js-results-button is returned, rather than the js-next-button when
+//there are more questions to be asked.
 function userIncorrectFeeback() {
     if (questionNum+1 < STORE.length) {
         $('.user-feedback').html(`
-            <h4>Bummer, you missed that one</h4>
+            <h4>Bummer, you got that one Incorrect!</h4>
             <p class="quote">The correct answer is: ${STORE[questionNum].correctAnswer}</p>
             <button class="js-next-button">I'll drown my sorrows in another question</button>`
         );
@@ -179,12 +169,11 @@ function userIncorrectFeeback() {
                     <span class="current-score">Score: ${userScore}/${questionNum+1}</span>
                 </div>`
         );
-        console.log('Incorrect feedback ran');
         showResults();
     }
     else {
         $('.user-feedback').html(`
-            <h4>Bummer, you missed that one</h4>
+            <h4>Bummer, you got that one Incorrect!</h4>
             <p class="quote">While this might seem like an opinion question, the best beer is in fact: ${STORE[questionNum].correctAnswer}</p>
             <button class="js-results-button">The End <br> See results</button>`
         );
@@ -199,7 +188,7 @@ function userIncorrectFeeback() {
     }
 }
 
-//take user to next question from results
+//take user to next question from the question feedback
 function handleNextButton() {
     $('.user-feedback').on('click', '.js-next-button', function(event) {
         event.preventDefault();
@@ -209,7 +198,7 @@ function handleNextButton() {
     })
 }
 
-//show final results
+//show final results -- this function takes user to a Final Score display with a button to restart the quiz
 function showResults() {
     $('.user-feedback').on('click', '.js-results-button', function(event) {
     $('.quiz').addClass('hidden');
@@ -222,7 +211,7 @@ function showResults() {
     });
 }
 
-//handleRestartButton
+//handleRestartButton -- this funcction resets the userScore and questionNum variables and restarts the quiz
 function handleRestartButton() {
     $('.results').on('click', '.js-restart', function(event) {
         userScore = 0;
@@ -232,30 +221,14 @@ function handleRestartButton() {
     })
 }
 
-// //testing
-// function buttonClick() {
-//     $('.js-start-button').click(event => 
-//     $('.output').text(`Button clicked: `+$(event.currentTarget).text())
-// );
-// }
-// function submitButtonClick() {
-//     $('.quiz').on('click', '.js-submit-button', function(event) {
-//         console.log(`The Cheers button was clicked`);
-//         nextQuestion();
-// });
-// }
-
-//call all functions
-function runQuizApp() {
-    console.log(questionNum); 
-    console.log(userScore);   
+//initialize all app functions
+function runQuizApp() { 
     generateQuestion();
     handleStartButton();
     handleSubmitButton();
     handleRestartButton();
     handleNextButton();
 }
-
 
 $(runQuizApp);
 
