@@ -117,7 +117,7 @@ input[type=radio]:focus{
     outline: 2px solid whitesmoke;
 }
 
-input[type=radio]:focus + span{
+input[type=radio]:focus{
     flex: 0 0 auto; 
     margin-right: 10px;
     vertical-align: middle;
@@ -167,24 +167,25 @@ div {
 
 .quiz-progress {
     display: inline-block;
-    text-align: left;
-    padding: 0 15px 0 25px;
+    text-align: center;
+    padding: 0;
 }
 
 .stats {
     font-size: 20px;
     font-weight: bold;
-    margin: auto;
+    margin: 20px 0;
 }
 
 .stats.user-feedback{
     border: none;
+    margin: 20px 0;
 }
 
 .current-score {
     display: inline-block;
-    text-align: right;
-    padding-left: 25px;
+    text-align: center;
+    padding: 0 ;
     /* float: right; */
 }
 

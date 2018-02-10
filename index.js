@@ -53,6 +53,7 @@ function generateQuestion() {
         <h3>${STORE[questionNum].question}</h2>
         <form>
             <fieldset>
+                <legend style="display:none">${STORE[questionNum].question}</legend>
                 <label class="choices">
                 <input type="radio" value="${STORE[questionNum].answers[0]}" name="answer" required checked="checked">
                 <span>${STORE[questionNum].answers[0]}</span>
