@@ -36,13 +36,7 @@
   float: left;
   padding-left: 1.04166666%;
   padding-right: 1.04166666%;
-}
-span.quiz-progress span.current-score{
-  float: left;
-  text-align: center;
-  padding: 0;
-  color: white;
-}
+
 /* Mobile defaults */
 .col-3, .col-4, .col-6, .col-12 {
   width: 100%;
