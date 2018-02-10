@@ -1,10 +1,6 @@
 body {
     font-family: 'Roboto', sans-serif;
     background: rgb(236, 151, 24);
-    /* background-image: url("https://i.imgur.com/oKYzYD4.jpg") ;
-    background-repeat: no-repeat;
-    background-size: cover;*/
-    /* margin: 120px 15% 90px 15%; */
 }
 
 .page-bg {
@@ -166,19 +162,16 @@ div {
 .stats {
     font-size: 20px;
     font-weight: bold;
-    /* margin: 20px 0; */
 }
 
 .stats.user-feedback{
     border: none;
-    margin: 20px 0;
 }
 
 .current-score {
     display: inline-block;
     text-align: center;
     padding: 0 25px;
-    /* float: right; */
 }
 
 .quiz.hidden {
@@ -188,7 +181,6 @@ div {
 .user-feedback {
     display: block;
     text-align: center;
-    /* margin: 20px auto; */
     border: 1px solid dimgray;
 }
 .user-feedback.hidden {
@@ -213,8 +205,6 @@ div {
 p.quote {
     font-weight: bold;
     font-size: 18px;
-    /* background-color:  rgb(209, 128, 6);
-    opacity: .65; */
     padding: 5px 0;
     color: whitesmoke;
 }
