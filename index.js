@@ -52,22 +52,22 @@ function generateQuestion() {
         <div class="quiz">
         <h3>${STORE[questionNum].question}</h2>
         <form>
-            <fieldset>
-                <legend style="display:none">${STORE[questionNum].question}</legend>
+            <fieldset role="radiogroup">
+                <legend style="display:none" role="radiogroup" aria-label="question">${STORE[questionNum].question}</legend>
                 <label class="choices">
-                <input type="radio" value="${STORE[questionNum].answers[0]}" name="answer" required checked="checked">
+                <input type="radio" value="${STORE[questionNum].answers[0]}" name="answer" required checked="checked" id="option1">
                 <span>${STORE[questionNum].answers[0]}</span>
                 </label>
                 <label class="choices">
-                <input type="radio" value="${STORE[questionNum].answers[1]}" name="answer" required>
+                <input type="radio" value="${STORE[questionNum].answers[1]}" name="answer" required id="option2">
                 <span>${STORE[questionNum].answers[1]}</span>
                 </label>
                 <label class="choices">
-                <input type="radio" value="${STORE[questionNum].answers[2]}" name="answer" required>
+                <input type="radio" value="${STORE[questionNum].answers[2]}" name="answer" required id="option3">
                 <span>${STORE[questionNum].answers[2]}</span>
                 </label>
                 <label class="choices">
-                <input type="radio" value="${STORE[questionNum].answers[3]}" name="answer" required>
+                <input type="radio" value="${STORE[questionNum].answers[3]}" name="answer" required id="option4">
                 <span>${STORE[questionNum].answers[3]}</span>
                 </label>
             </fieldset>
